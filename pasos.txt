@@ -1,0 +1,35 @@
+instalr ng add @angular/material
+  con sus respectivo pasos purpel/gree y y desde Vs
+
+
+crear modulos
+  ng g m auth
+  ng g m heroes
+  ng g m material
+
+crear carpeta pages en auth y heroes
+
+crear componentes
+  ng g c auth/pages/login --skip-tests -is
+  ng g c auth/pages/registro --skip-tests -is
+
+  ng g c heroes/pages/agregar --skip-tests -is
+  ng g c heroes/pages/buscar --skip-tests -is
+  ng g c heroes/pages/heroe --skip-tests -is
+  ng g c heroes/pages/home --skip-tests -is
+  ng g c heroes/pages/listado --skip-tests -is
+
+
+crear carpeta shared dentro de app
+  ng g c shared/errorPage --skip-tests -is
+
+
+Crear Rutas
+  ng g m appRouting --flat   // no genera la carpeta - lo coloca en raiz
+
+
+Crear rutas para auth (lazyLoad)
+  ng g m auth/authRouting --flat
+
+Crear rutas para heroes (lazyLoad)
+  ng g m heroes/heroesRouting --flat
