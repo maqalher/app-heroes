@@ -33,3 +33,95 @@ Crear rutas para auth (lazyLoad)
 
 Crear rutas para heroes (lazyLoad)
   ng g m heroes/heroesRouting --flat
+
+
+Instalar angular felx layot
+  npm i @angular/flex-layout
+  npm i @angular/cdk
+
+  importar el modulo (solo se ocupara en Heroes)
+    import { FlexLayoutModule } from '@angular/flex-layout';
+
+    imports: [
+      CommonModule,
+      HeroesRoutingModule,
+      FlexLayoutModule
+    ]
+
+
+Crear carpeta de server (se utiliza JSON SERVER)
+
+
+Agregar assets
+
+Crear servicio de Heroes
+  ng g s heroes/services/heroes --skip-Tests
+
+
+importar http en app.module.ts
+  import { HttpClientModule } from '@angular/common/http';
+
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+
+
+Crear heroes.interface.ts en heroes
+
+
+Crear componente Heroe Tarjeta dentr de heroes componentes
+  ng g c heroes/components/HeroeTarjeta --skip-Tests -is
+
+Crear pipe "imagen"
+  ng g pipe heroes/pipes/imagen --skip-Tests
+
+
+
+para ver los parametros de la url cuando se mandad los datos
+
+  constructor( private activatedRoute: ActivatedRoute ) { }
+
+  ngOnInit(): void {
+
+    this.activatedRoute.params
+      .subscribe( ({id}) => console.log(id)  )
+
+  }
+
+
+configurar variables de entorno environments/environment.ts (environment.prod.ts de produccion)
+
+    export const environment = {
+      production: false,
+      baseUrl: 'http://localhost:3000'
+    };
+
+        en este caso en el servico
+
+            import { environment } from 'src/environments/environment';
+
+            private baseUrl:string = environment.baseUrl;
+
+            getHeroes():Observable<Heroe[]> {
+              return this.http.get<Heroe[]>(`${this.baseUrl}/heroes`);
+            }
+
+            getHeroesPorId( id:string ):Observable<Heroe> {
+              return this.http.get<Heroe>(`${this.baseUrl}/heroes/${id}`);
+            }
+
+
+
+Agregar Forms a heroes.module para el autocomplete
+    import { FormsModule } from '@angular/forms';
+
+    imports: [
+      CommonModule,
+      HeroesRoutingModule,
+      FlexLayoutModule,
+      MaterialModule,
+      FormsModule
+    ]
