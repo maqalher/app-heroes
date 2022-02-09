@@ -125,3 +125,7 @@ Agregar Forms a heroes.module para el autocomplete
       MaterialModule,
       FormsModule
     ]
+
+
+crear compoente para modtrar Dialog (confirmacion - borrar)
+  ng g c heroes/components/confirmar --skip-Tests -is
