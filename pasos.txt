@@ -129,3 +129,27 @@ Agregar Forms a heroes.module para el autocomplete
 
 crear compoente para modtrar Dialog (confirmacion - borrar)
   ng g c heroes/components/confirmar --skip-Tests -is
+
+
+generar servicio para auth
+  ng g s auth/services/auth --skip-Tests
+
+
+crear interfaz de auth
+
+
+generar guard para bloquear las rutas
+  ng g guard auth/guards/auth --skip-Tests
+    CanActivate
+    CanLoad
+
+        en este caso se agrega en app-routing-module.ts
+        import { AuthGuard } from './auth/guards/auth.guard';
+
+        const routes: Routes = [
+          {
+            path: 'heroes',
+            loadChildren: () => import('./heroes/heroes.module').then( m => m.HeroesModule),
+            canLoad: [AuthGuard]
+            canActivate: [AuthGuard]
+          },
